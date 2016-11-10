@@ -7,7 +7,7 @@ function install_google_cloud_sdk {
   curl -# https://dl.google.com/dl/cloudsdk/channels/rapid/install_google_cloud_sdk.bash > $script_file || exit 
   chmod 775 $script_file 
   if [ -n "$ANDRIOD_ROOT" ]; then
-      termux-fix-shebang.sh $script_file
+      termux-fix-shebang $script_file
     fi
   echo "Running install script from: $script_file" 
   $script_file 
