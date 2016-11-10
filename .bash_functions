@@ -1,4 +1,4 @@
-#!/bin/bash
+
 
 function install_google_cloud_sdk {
   scratch=$(mktemp -d -t tmp.XXXXXXXXXX) || exit 
