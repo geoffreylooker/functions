@@ -1,4 +1,17 @@
-#! /bin/bash
+#!/bin/bash
+
+function install_google_cloud_sdk {
+  scratch=$(mktemp -d -t tmp.XXXXXXXXXX) || exit 
+  script_file=$scratch/install_google_cloud_sdk.bash 
+  echo "Downloading Google Cloud SDK install script: $URL" 
+  curl -# https://dl.google.com/dl/cloudsdk/channels/rapid/install_google_cloud_sdk.bash > $script_file || exit 
+  chmod 775 $script_file 
+  if [ -n "$ANDRIOD_ROOT" ]; then
+      termux-fix-shebang.sh $script_file
+    fi
+  echo "Running install script from: $script_file" 
+  $script_file 
+}
 
 ### start credits: https://github.com/dylanaraps/neofetch/blob/master/neofetch
 
